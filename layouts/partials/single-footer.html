@@ -1,5 +1,5 @@
 <p>
-	&copy; {{ now.Format "2006" }} <a href="{{ .Site.BaseURL }}">{{ .Site.Params.author.name }}</a> &#183; {{ .Site.Params.footerCopyright | safeHTML }}
+	&copy; {{ now.Format "2006" }} <a href="{{ .Site.BaseURL }}">{{ .Site.Params.author.name }}</a> &#183; <a href="mailto:{{ .Site.Params.footerCopyright }}">{{ .Site.Params.footerCopyright | safeHTML }}</a>
 	{{- with .OutputFormats.Get "RSS" }}
 	&#183; <a href="{{ "index.xml" | absLangURL }}" target="_blank" title="rss">{{- partial "svg.html" (dict "context" . "name" "rss") -}}</a>
 	{{- end -}}
