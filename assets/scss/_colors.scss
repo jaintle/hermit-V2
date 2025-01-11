@@ -13,6 +13,7 @@ $taupe-grey: #878787;
 $chinese-silver: #cccccc;
 $anti-flash-white: #f1f1f1;
 $lapis-lazuli: #21759b; 
+$black: #000000;
 
 // Default Colors and Opacity for Admonition
 $blueberry: #448aff;
@@ -29,7 +30,7 @@ $admonition-background-opacity : 0.1;
 $dimmed-opacity: 0.6 !default;
 
 // Background color
-$html-background: $davys-grey !default;
+$html-background: $white !default;
 
 // Site Navigation color
 $site-nav-children-border-right:$css-grey !default;
@@ -75,7 +76,7 @@ $tableofcontents-scrollbar-thumb: $japanese-indigo !default;
 $tableofcontents-scrollbar-thumb-hover: lighten($japanese-indigo, 10%) !default;
 
 // Text color
-$text: $bright-grey !default;
+$text: $black !default;
 
 // Text selection color
 $text-select: $css-grey !default;
