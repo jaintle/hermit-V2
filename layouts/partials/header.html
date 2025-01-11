@@ -7,6 +7,7 @@
 				<nav class="site-nav hide-in-mobile">{{- partialCached "menu.html" . -}}</nav>
 			</div>
 			<div class="hdr-right hdr-icons">
+				<span class="hide-in-mobile"><iframe src="https://embeds.beehiiv.com/037aba7a-985d-49d5-ad91-b607d5122ca7?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe></span>
 				{{ if (or .Params.images .Params.featuredImg) -}}
 				<button id="img-btn" class="hdr-btn" title="{{i18n "featuredImage"}}">{{- partial "svg.html" (dict "context" . "name" "featuredImg") -}}</button>
 				{{- end }}
