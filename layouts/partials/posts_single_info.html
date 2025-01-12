@@ -1,9 +1,31 @@
 {{- with .Params.description }}<p>{{.}}</p>{{- end }}
-{{- if and .Params.author .Params.authorLink}}{{ $relreflink := relref . .Params.authorLink }}<p>{{ partial "svg.html" (dict "context" . "name" "author") }}<a href="{{ $relreflink }}" target="_blank">{{ .Params.author }}</a></p>
-{{- else if and .Params.author .Site.Params.author.about }}{{ $relreflink := relref . .Site.Params.author.about }}<p>{{ partial "svg.html" (dict "context" . "name" "author") }}<a href="{{ $relreflink }}" target="_blank">{{ .Params.author }}</a></p>
-{{- else if and .Site.Params.author.about .Site.Params.author.name }}{{ $relreflink := relref . .Site.Params.author.about }}<p>{{ partial "svg.html" (dict "context" . "name" "author") }}<a href="{{ $relreflink }}" target="_blank">{{ .Site.Params.author.name }}</a></p>
-{{- else }}<p>{{ partial "svg.html" (dict "context" . "name" "author") }}{{ .Site.Params.author.name }}</p>
+{{- with .Params.author }}
+  <p>{{ partial "svg.html" (dict "context" . "name" "author") }}
+    {{- if reflect.IsSlice . }}
+      {{- $lastIndex := sub (len .) 1 }} <!-- Calculate last index -->
+      {{- range $index, $author := . }}
+        {{- $name := (index $author "name") | default $author }}
+        {{- if (index $author "link") }}
+          <a href="{{ (index $author "link") | relURL }}" target="_blank" rel="noopener">{{ $name }}</a>
+        {{- else }}
+          {{ $name }}
+        {{- end }}
+        {{- if lt $index $lastIndex }}, {{- end }} <!-- Add comma if not the last item -->
+      {{- end }}
+    {{- else if reflect.IsMap . }}
+      {{- $name := .name | default "" }}
+      {{- if .link }}
+        <a href="{{ .link | relURL }}" target="_blank" rel="noopener">{{ $name }}</a>
+      {{- else }}
+        {{ $name }}
+      {{- end }}
+    {{- else }}
+      {{ . }}
+    {{- end }}
+  </p>
 {{- end }}
+
+
 {{- with .Params.tags }}
 <p>{{- partial "svg.html" (dict "context" . "name" "posts_single_tags") -}}{{- range . -}}<span class="tag"><a href="{{ "tags/" | absLangURL }}{{ . | urlize }}">{{.}}</a></span>{{- end }}</p>
 {{- end }}
