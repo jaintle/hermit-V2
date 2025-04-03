@@ -1046,6 +1046,54 @@ a.footnote-ref {
   justify-content: flex-end;
 }
 
+#title-wrapper {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto; /* centers the entire block horizontally */
+}
+
+#home-title {
+  margin: 0;
+  // text-align: center;
+  position: relative;
+  z-index: 1;
+  font-size: 2.5rem; /* or whatever you use */
+  margin-left: 3.5rem
+}
+
+#rotating-prefix {
+  position: absolute;
+  left: -12ch; /* space to the left of the title */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12ch;
+  text-align: right;
+  color: $pine-green;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  white-space: nowrap;
+  pointer-events: none;
+  font-size: 2.5rem;
+}
+
+#home-link {
+  color: black;
+  text-decoration: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#home-link:hover {
+  text-decoration: underline;
+  text-decoration-color: $pine-green;
+}
+
+#home-link:hover span {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: $pine-green;;
+}
+
+
 // If homeSubtitlePrinter is true
 {{- if .Site.Params.homeSubtitlePrinter }}
   #home-subtitle{

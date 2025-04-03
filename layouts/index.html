@@ -14,7 +14,14 @@
 	{{- end }}
 	<div id="spotlight" {{- if ne false .Site.Params.usesAnimation }} class="animated fadeIn" {{- end -}}>
 		<div id="home-center">
-			<h1 id="home-title">{{ .Site.Title }}</h1>
+			<div id="title-wrapper">
+				<a id="home-link" href="https://www.abhinav-ja.in" target="_blank" rel="noopener noreferrer">
+				  <h1 id="home-title">
+					<span id="rotating-prefix"></span><span id="static-domain">abhinav-ja.in</span>
+				  </h1>
+				</a>
+			  </div>			  
+			  		
 			{{- with .Site.Params.homeSubtitle }}
 			<p id="home-subtitle">{{.}}</p>
 			{{- end }}

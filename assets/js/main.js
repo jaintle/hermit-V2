@@ -119,3 +119,25 @@ if (header !== null) {
     }
   }, 250));
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const subdomains = ["www.", "newsletter.", "communities."];
+  const prefixSpan = document.getElementById("rotating-prefix");
+  const homeLink = document.getElementById("home-link");
+  let index = 0;
+
+  function updateLink() {
+    prefixSpan.style.opacity = 0;
+
+    setTimeout(() => {
+      const subdomain = subdomains[index];
+      prefixSpan.textContent = subdomain;
+      homeLink.href = `https://${subdomain}abhinav-ja.in`;
+      prefixSpan.style.opacity = 1;
+      index = (index + 1) % subdomains.length;
+    }, 300);
+  }
+
+  updateLink();
+  setInterval(updateLink, 3000);
+});
