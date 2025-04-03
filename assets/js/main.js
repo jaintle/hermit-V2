@@ -139,5 +139,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateLink();
-  setInterval(updateLink, 3000);
+  setInterval(updateLink, 3001);
 });
