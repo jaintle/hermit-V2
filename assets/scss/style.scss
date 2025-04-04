@@ -1049,31 +1049,49 @@ a.footnote-ref {
 #title-wrapper {
   position: relative;
   width: fit-content;
-  margin: 0 auto; /* centers the entire block horizontally */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #home-title {
   margin: 0;
-  // text-align: center;
   position: relative;
   z-index: 1;
-  font-size: 2.5rem; /* or whatever you use */
-  margin-left: 3.5rem
+  font-size: 2.5rem;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
 }
 
+/* Responsive subdomain text */
 #rotating-prefix {
-  position: absolute;
-  left: -12ch; /* space to the left of the title */
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12ch;
-  text-align: right;
   color: $pine-green;
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
   white-space: nowrap;
   pointer-events: none;
   font-size: 2.5rem;
+  display: inline-block;
+  max-width: 100%;
+  text-align: right;
+}
+
+/* Mobile fix */
+@media (max-width: 600px) {
+  #home-title {
+    font-size: 6vw;
+    flex-direction: column;
+  }
+
+  #rotating-prefix {
+    font-size: 6vw;
+    text-align: center;
+  }
 }
 
 #home-link {
@@ -1090,7 +1108,7 @@ a.footnote-ref {
 #home-link:hover span {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: $pine-green;;
+  text-decoration-color: $pine-green;
 }
 
 
