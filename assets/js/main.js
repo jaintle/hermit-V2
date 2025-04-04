@@ -121,9 +121,20 @@ if (header !== null) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ DOMContentLoaded triggered");
+
   const subdomains = ["www.", "newsletter.", "communities."];
   const prefixSpan = document.getElementById("rotating-prefix");
   const homeLink = document.getElementById("home-link");
+
+  console.log("🔍 prefixSpan:", prefixSpan);
+  console.log("🔍 homeLink:", homeLink);
+
+  if (!prefixSpan || !homeLink) {
+    console.warn("🚨 DOM elements missing. Skipping rotation.");
+    return;
+  }
+
   let index = 0;
 
   function updateLink() {
@@ -141,3 +152,4 @@ document.addEventListener("DOMContentLoaded", () => {
   updateLink();
   setInterval(updateLink, 3001);
 });
+
