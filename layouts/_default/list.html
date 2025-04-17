@@ -5,8 +5,11 @@
 {{ define "main" }}
 	<main class="site-main section-inner thin {{- if ne false .Site.Params.usesAnimation }} animated fadeIn faster{{- end -}}">
 		<h1>{{ .Title }}</h1>
-		Posts are broadly divided into three categories: <a href="/tags/tech/"><ins>tech</ins></a>, <a href="/tags/films/"><ins>films</ins></a>, and <a href="/tags/society/"><ins>society</ins></a>. You can click on any year to jump to the posts of that year. You can find all co-authored posts <a href="/tags/co-authored/"><ins>here</ins></a>. You can also click on the authors' names to read a short introduction of them.
-		<br>These are selected writings. To read all my articles, headover to my <a href="https://newsletter.abhinav-ja.in" target="_blank" rel="noopener noreferrer"><ins>newsletter</ins></a>.
+		Posts are broadly grouped into <a href="/tags/tech/"><ins>tech</ins></a>, <a href="/tags/films/"><ins>films</ins></a>, and <a href="/tags/society/"><ins>society</ins></a>. You can jump to a year to explore what was written then.
+
+There’s a section for <a href="/tags/co-authored/"><ins>co-authored posts</ins></a>—currently empty, but open for company. If you'd like to write together, feel free to reach out.
+
+These are selected pieces. For everything I’ve written, head to the <a href="https://newsletter.abhinav-ja.in" target="_blank" rel="noopener noreferrer"><ins>newsletter</ins></a>.
 		<br>
 		<br>
 		{{- if .Content }}
