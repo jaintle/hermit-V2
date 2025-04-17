@@ -1,0 +1,50 @@
+{{ define "head" }}
+  {{ if .Params.featuredImg -}}
+    <style>.bg-img {background-image: url('{{.Params.featuredImg}}');}</style>
+  {{- else if .Params.images -}}
+    {{- range first 1 .Params.images -}}
+      <style>.bg-img {background-image: url('{{. | absURL}}');}</style>
+    {{- end -}}
+  {{- end }}
+{{ end }}
+
+{{ define "header" }}
+  {{ partial "header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+  {{- if (or .Params.images .Params.featuredImg) }}
+    <div class="bg-img"></div>
+  {{- end }}
+
+  <main class="site-main section-inner thin {{- if ne false .Site.Params.usesAnimation }} animated fadeIn faster {{- end -}}">
+
+
+    <h1>{{ .Title }}</h1>
+
+    <div class="content">
+        {{- $img := `<div style="float:left; margin: 0 1.5rem 1rem 0;">
+          <img src='/images/about/abhinav_jain.jpg' 
+               alt='Abhinav Jain'
+               width='180' height='180' 
+               style='object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);'>
+        </div>` -}}
+      
+        {{ $injected := replaceRE "(</p>)" (print "${1}" $img) .Content 1 }}
+        {{ $injected | safeHTML }}
+      </div>
+      
+
+    {{ partial "brainMade.html" . }}
+
+    {{- if .Params.comments }}
+      <div id="comments" class="thin">
+        {{ partial "comments.html" . }}
+      </div>
+    {{- end }}
+  </main>
+{{ end }}
+
+{{ define "footer" }}
+  {{ partialCached "footer.html" . }}
+{{ end }}
